@@ -5,7 +5,7 @@ include '../database/connection.php';
 $error_message = '';
 $success_message = '';
 
-// Verificar si se enviaron datos desde el formulario de registro
+// Check if data was submitted from the registration form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if data was submitted from the registration form
     $name = $_POST['name'];

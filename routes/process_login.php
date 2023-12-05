@@ -1,24 +1,27 @@
 <?php
-// Archivo de conexión a la base de datos
+// Database connection file
 include '../database/connection.php';
 
-// Verificar si se enviaron datos desde el formulario de login
+$error_message = '';
+$success_message = '';
+
+// Check if data was sent from the login form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener el correo y la contraseña del formulario
+    // Get the email and password from the form
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Buscar el usuario en la base de datos por correo electrónico
+    // Search the user in the database by email
     $stmt = $pdo->prepare('SELECT * FROM Users WHERE email = :email');
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch();
 
-    // Verificar si el usuario existe y la contraseña es válida
+    // Check if the user exists and the password is valid
     if ($user && password_verify($password, $user['password_hash'])) {
-        // El login es exitoso
-        echo 'Login exitoso';
+        // The login is successful
+        $success_message = true;
     } else {
-        // Las credenciales son incorrectas
+        // The credentials are incorrect
         $error_message = 'Credenciales incorrectas.';
     }
 }

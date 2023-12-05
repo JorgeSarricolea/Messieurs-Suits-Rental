@@ -4,7 +4,6 @@
     <li><a href="./catalogue.php">Catálogo</a></li>
     <li><a href="./quote.php">Cotizar</a></li>
     <li><a href="./contact.php">Contacto</a></li>
-    <li><a href="../admin_pages/products.php">Productos</a></li>
         <?php
         if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
             // If the user is authenticated

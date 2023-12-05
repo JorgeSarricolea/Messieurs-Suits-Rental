@@ -37,10 +37,9 @@
 
     if ($success_message === true) {
       // Redirect to index page
-      echo '<script>
-              window.location.href = "./index.php";
-            </script>';
-  }
+        header("Location: ./index.php");
+        exit();
+    }
     ?>
 </body>
 </html>

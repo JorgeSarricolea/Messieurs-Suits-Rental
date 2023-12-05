@@ -5,6 +5,8 @@ include '../database/connection.php';
 $error_message = '';
 $success_message = '';
 
+session_start();
+
 // Check if data was sent from the login form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the email and password from the form
@@ -19,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the user exists and the password is valid
     if ($user && password_verify($password, $user['password_hash'])) {
         // The login is successful
+        $_SESSION['user_id'] = $user['user_ID'];
+        $_SESSION['user_email'] = $user['email'];
         $success_message = true;
     } else {
         // The credentials are incorrect

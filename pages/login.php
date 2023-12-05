@@ -35,10 +35,16 @@
             </script>';
     }
 
-    if ($success_message === true) {
+    if ($success_login === true) {
       // Redirect to index page
+      if ($user['isAdmin'] === 1) {
+        header("Location: ../admin_pages/products.php");
+        exit();
+    } else {
+        // Redirect to index page
         header("Location: ./index.php");
         exit();
+        }
     }
     ?>
 </body>

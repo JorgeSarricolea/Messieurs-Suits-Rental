@@ -3,7 +3,7 @@
 include '../database/connection.php';
 
 $error_message = '';
-$success_message = '';
+$success_login = '';
 
 session_start();
 
@@ -23,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // The login is successful
         $_SESSION['user_id'] = $user['user_ID'];
         $_SESSION['user_email'] = $user['email'];
-        $success_message = true;
+        $_SESSION['isAdmin'] = $user['isAdmin'];
+        $success_login = true;
     } else {
         // The credentials are incorrect
         $error_message = 'Credenciales incorrectas.';

@@ -12,7 +12,10 @@ $dbname = $_ENV['DB_NAME'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verify the connection
-if ($conn->connect_error) {
-    die("Failed connection: " . $conn->connect_error);
+// Verify the connection with PDO
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+    // Otros ajustes de PDO si los necesitas
+} catch (PDOException $e) {
+    die('Error de conexión a la base de datos: ' . $e->getMessage());
 }

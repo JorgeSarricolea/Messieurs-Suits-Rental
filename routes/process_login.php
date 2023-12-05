@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 'Login exitoso';
     } else {
         // Las credenciales son incorrectas
-        echo 'Correo electrónico o contraseña incorrectos';
+        $error_message = 'Credenciales incorrectas.';
     }
 }
 ?>

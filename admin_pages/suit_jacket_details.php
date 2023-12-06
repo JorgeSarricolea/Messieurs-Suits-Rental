@@ -116,8 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Move the new image to the specified folder
                 move_uploaded_file($img_tmp, $img_path);
             }
-        } else {
-            // No image provided for a new jacket, handle accordingly (you may want to show an error or redirect)
         }
 
         $sql = "INSERT INTO SuitJackets (model, color, chest_size, shoulder_size, price, image_src) VALUES ('$model', '$color', $chest_size, $shoulder_size, $price, '$img_path')";

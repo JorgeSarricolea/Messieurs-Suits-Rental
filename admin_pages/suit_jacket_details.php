@@ -93,13 +93,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $sql = "UPDATE SuitJackets SET model = '$model', color = '$color', chest_size = $chest_size, shoulder_size = $shoulder_size, price = $price";
 
         // Update the image path only if a new image was uploaded
-        if (isset($img_path)) {
+        if (isset($img_path) && !empty($img_path)) {
             $sql .= ", image_src = '$img_path'";
         }
 
         $sql .= " WHERE jacket_ID = $update_id";
     } else {
         // Insert: prepare the SQL query to insert
+        // Ensure $img_path is set even if no new image is uploaded
+        $img_path = isset($img_path) ? $img_path : '';
+
+        // Check if a new image is provided in the case of an insertion
+        if ($_FILES['imagen']['size'] > 0) {
+            $img_name = $_FILES['imagen']['name'];
+            $img_tmp = $_FILES['imagen']['tmp_name'];
+
+            // Check if a file was uploaded and if it is an image
+            if (is_uploaded_file($img_tmp) && getimagesize($img_tmp)) {
+                // Path where the new image will be saved
+                $img_path = "../uploads/" . $img_name;
+
+                // Move the new image to the specified folder
+                move_uploaded_file($img_tmp, $img_path);
+            }
+        } else {
+            // No image provided for a new jacket, handle accordingly (you may want to show an error or redirect)
+        }
+
         $sql = "INSERT INTO SuitJackets (model, color, chest_size, shoulder_size, price, image_src) VALUES ('$model', '$color', $chest_size, $shoulder_size, $price, '$img_path')";
     }
 
@@ -160,7 +180,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div>
             <label for="imagen"><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()">
+            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
+
             <?php if (isset($img_path) && !empty($img_path)) { ?>
                 <p>Imagen actual: <?php echo basename($img_path); ?></p>
                 <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">

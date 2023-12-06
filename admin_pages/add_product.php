@@ -1,6 +1,6 @@
 <?php
-  // Check if the user is an administrator
-  include './isAdmin.php'
+// Check if the user is an administrator
+include './isAdmin.php'
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,12 @@
 <?php
+// Check if the user is an administrator
+include './isAdmin.php';
+
 // Database connection file
 include '../database/connection.php';
+
+// Side menu
+include '../includes/side_menu.php';
 
 // Variables to pre-fill the form (default values)
 $model = '';
@@ -127,7 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<div class='success-message'>" . $success_message . "</div>";
         header("refresh:2;url=./suit_jackets.php");
     } else {
-        echo "Error al agregar el saco: " . $conn->error;
+        $error_message = isset($_POST['edit_jacket_id']) ? 'Error al editar' : 'Error al agregar';
+        echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
     }
 
     // Close the connection to the database
@@ -184,7 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <p>Imagen actual: <?php echo basename($img_path); ?></p>
                 <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
             <?php } else { ?>
-                <p>No se ha seleccionado ninguna imagen.</p>
                 <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
             <?php } ?>
         </div>

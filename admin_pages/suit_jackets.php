@@ -8,8 +8,14 @@
 <body>
 
 <?php
+    // Check if the user is an administrator
+    include './isAdmin.php';
+
     // Database connection file
     include '../database/connection.php';
+
+    // Side menu
+    include '../includes/side_menu.php';
 
     // Product options menu
     include '../includes/product_options.php';
@@ -18,9 +24,11 @@
     function deleteSuitJacket($conn, $jacketID) {
         $sql = "DELETE FROM SuitJackets WHERE jacket_ID = $jacketID";
         if ($conn->query($sql) === TRUE) {
-            echo "Saco eliminado correctamente";
+            $deletion_message = "Saco eliminado correctamente";
+            echo "<div class='deletion-message'>" . $deletion_message . "</div>";
         } else {
-            echo "Error al eliminar el saco: " . $conn->error;
+            $error_message = "Error al eliminar el saco";
+            echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";
         }
     }
 

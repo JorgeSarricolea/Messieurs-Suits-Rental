@@ -1,6 +1,12 @@
 <?php
-  // Check if the user is an administrator
-  include './isAdmin.php'
+// Check if the user is an administrator
+include './isAdmin.php';
+
+// Side menu
+include '../includes/side_menu.php';
+
+// Product options
+include '../includes/product_options.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,13 +17,5 @@
   <title>Productos</title>
 </head>
 <body>
-<?php include '../includes/side_menu.php'?>
-  <ul>
-    <li> <a href="./suit-jackets.php">Sacos</a></li>
-    <li> <a href="./suit-pants.php">Sacos</a></li>
-    <li> <a href="./shirts.php">Sacos</a></li>
-    <li> <a href="./ties.php">Sacos</a></li>
-    <li> <a href="./shoes.php">Sacos</a></li>
-  </ul>
 </body>
 </html>

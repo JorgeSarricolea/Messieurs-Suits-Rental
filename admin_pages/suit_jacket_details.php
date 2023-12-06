@@ -168,7 +168,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         Talla de hombro (cm): <input type="number" name="shoulder_size" value="<?php echo $shoulder_size; ?>" required><br>
         Precio: <input type="text" name="price" value="<?php echo $price; ?>" required><br>
 
-        <div>
+        <!-- Input to upload a image -->
+        <section id="img-main-container">
             <label for="imagen"><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
             <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
 
@@ -178,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php } else { ?>
                 <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
             <?php } ?>
-        </div>
+        </section>
 
         <input type="submit" value="<?php echo isset($edit_jacket_id) ? 'Guardar cambios' : 'Añadir'; ?>">
     </form>

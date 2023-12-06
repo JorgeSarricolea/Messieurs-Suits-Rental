@@ -8,15 +8,18 @@ include '../database/connection.php';
 // Side menu
 include '../includes/side_menu.php';
 
+// List of colors
+include '../includes/color_options.php';
+
+// List of models
+include '../includes/pant_models.php';
+
 // Variables to pre-fill the form (default values)
 $model = '';
 $color = '';
 $waist_size = '';
 $hip_size = '';
 $price = '';
-
-// List of options for selectors
-// ...
 
 // Check if an ID is provided in the URL
 if (isset($_GET['id'])) {
@@ -31,6 +34,8 @@ if (isset($_GET['id'])) {
         $row = $result->fetch_assoc();
 
         // Use the details to pre-fill the form
+        $model = $row['model'];
+        $color = $row['color'];
         $waist_size = $row['waist_size'];
         $hip_size = $row['hip_size'];
         $price = $row['price'];
@@ -43,11 +48,15 @@ if (isset($_GET['id'])) {
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve form data
+    $model = $_POST['model'];
+    $color = $_POST['color'];
     $waist_size = $_POST['waist_size'];
     $hip_size = $_POST['hip_size'];
     $price = $_POST['price'];
 
     // Data cleaning
+    $model = mysqli_real_escape_string($conn, $model);
+    $color = mysqli_real_escape_string($conn, $color);
     $waist_size = mysqli_real_escape_string($conn, $waist_size);
     $hip_size = mysqli_real_escape_string($conn, $hip_size);
     $price = mysqli_real_escape_string($conn, $price);
@@ -72,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
-        $sql = "UPDATE SuitPants SET waist_size = $waist_size, hip_size = $hip_size, price = $price";
+        $sql = "UPDATE SuitPants SET  model = '$model', color = '$color', waist_size = $waist_size, hip_size = $hip_size, price = $price";
 
         // Update the image path only if a new image was uploaded
         if (isset($img_path) && !empty($img_path)) {
@@ -100,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
-        $sql = "INSERT INTO SuitPants (waist_size, hip_size, price, image_src) VALUES ($waist_size, $hip_size, $price, '$img_path')";
+        $sql = "INSERT INTO SuitPants (model, color, waist_size, hip_size, price, image_src) VALUES ('$model', '$color',$waist_size, $hip_size, $price, '$img_path')";
     }
 
     // Execute the query
@@ -133,7 +142,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="hidden" name="edit_pant_id" value="<?php echo $edit_pant_id; ?>">
         <?php } ?>
 
-        <!-- Fields of the form (similar to what you already have for SuitJackets) -->
+        <!-- Model options -->
+        Modelo:
+        <select name="model" required>
+            <option value="" disabled>Seleccione...</option>
+            <?php
+                foreach ($model_options as $value => $text) {
+                    echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
+                }
+            ?>
+        </select><br>
+
+        <!-- Color options -->
+        Color:
+        <select name="color" required>
+            <option value="" disabled>Seleccione...</option>
+            <?php
+                foreach ($color_options as $value => $text) {
+                    echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
+                }
+            ?>
+        </select><br>
+
+        Talla de cintura (cm): <input type="number" name="waist_size" value="<?php echo $waist_size; ?>" required><br>
+        Talla de cadera (cm): <input type="number" name="hip_size" value="<?php echo $hip_size; ?>" required><br>
+        Precio: <input type="text" name="price" value="<?php echo $price; ?>" required><br>
+
+        <!-- Input to upload a image -->
+        <section id="img-main-container">
+            <label for="imagen"><?php echo isset($edit_pant_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
+            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_pant_id) ? 'required' : ''; ?>>
+
+            <?php if (isset($img_path) && !empty($img_path)) { ?>
+                <p>Imagen actual: <?php echo basename($img_path); ?></p>
+                <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+            <?php } else { ?>
+                <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+            <?php } ?>
+        </section>
 
         <input type="submit" value="<?php echo isset($edit_pant_id) ? 'Guardar cambios' : 'Añadir'; ?>">
     </form>

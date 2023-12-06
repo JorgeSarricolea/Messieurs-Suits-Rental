@@ -1,3 +1,8 @@
+<?php
+session_start();
+include '../includes/header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +11,6 @@
   <title>Formulario de Contacto</title>
 </head>
 <body>
-  <?php
-    session_start();
-    include '../includes/header.php';
-    ?>
 
   <form name="contact-form" onsubmit="return validateForm()" action="mailto:jjorgesarricolea18@gmail.com" method="post">
     <h2>Datos personales</h2>

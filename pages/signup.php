@@ -1,3 +1,8 @@
+<?php
+// Process form logic
+include '../routes/process_signup.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,12 +12,6 @@
 </head>
 <body>
     <h2>Registro</h2>
-
-    <?php
-    // Process form logic
-    include '../routes/process_signup.php';
-    ?>
-
     <form action="signup.php" method="post">
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
@@ -37,7 +36,7 @@
         echo '<script>
                 setTimeout(function () {
                     document.getElementById("error-message").style.display = "none";
-                }, 3000);
+                }, 2000);
             </script>';
     }
 
@@ -48,7 +47,7 @@
               setTimeout(function () {
                   document.getElementById("success-message").style.display = "none";
                   window.location.href = "../pages/login.php";
-              }, 3000);
+              }, 2000);
             </script>';
   }
     ?>

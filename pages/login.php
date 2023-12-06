@@ -1,3 +1,8 @@
+<?php
+// Process form logic
+include '../routes/process_login.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,12 +12,6 @@
 </head>
 <body>
     <h2>Login</h2>
-
-    <?php
-    // Process form logic
-    include '../routes/process_login.php';
-    ?>
-
     <form action="login.php" method="post">
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" required>
@@ -31,7 +30,7 @@
         echo '<script>
                 setTimeout(function () {
                     document.getElementById("error-message").style.display = "none";
-                }, 3000);
+                }, 2000);
             </script>';
     }
 

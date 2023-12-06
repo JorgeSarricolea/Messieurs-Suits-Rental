@@ -1,3 +1,8 @@
+<?php
+session_start();
+include '../includes/header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +11,6 @@
   <title>Formulario de Cotización</title>
 </head>
 <body>
-  <?php
-    session_start();
-    include '../includes/header.php';
-  ?>
-
   <form action="../routes/process_quote.php" method="post">
       <h2>Datos personales</h2>
       Nombre: <input type="text" name="user_name" required><br>

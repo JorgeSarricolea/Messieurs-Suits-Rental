@@ -32,7 +32,7 @@
 
         // Print a success message and redirect to index after 3 seconds
         echo '<div><h1>¡Cotización enviada correctamente!</h1></div>';
-        header("refresh:3;url=../pages/index.php");
+        header("refresh:2;url=../pages/index.php");
         exit();
     }
 ?>

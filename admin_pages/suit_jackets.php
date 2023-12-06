@@ -26,6 +26,7 @@
         if ($conn->query($sql) === TRUE) {
             $deletion_message = "Saco eliminado correctamente";
             echo "<div class='deletion-message'>" . $deletion_message . "</div>";
+            header("refresh:2;url=./suit_jackets.php");
         } else {
             $error_message = "Error al eliminar el saco";
             echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";

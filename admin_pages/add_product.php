@@ -12,6 +12,15 @@ include './isAdmin.php'
 </head>
 <body>
 <?php include '../includes/side_menu.php'?>
-  Admin
+<nav>
+    <ul>
+      <li><a href="./suit_jacket_details.php">Sacos</a></li>
+      <li><a href="./suit_pant_details.php">Pantalones</a></li>
+      <li><a href="./shirt_details.php">Camisas</a></li>
+      <li><a href="./tie_details.php">Corbatas</a></li>
+      <li><a href="./shoe_details.php">Zapatos</a></li>
+    </ul>
+</nav>
+
 </body>
 </html>

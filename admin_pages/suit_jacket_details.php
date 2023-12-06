@@ -8,33 +8,18 @@ include '../database/connection.php';
 // Side menu
 include '../includes/side_menu.php';
 
+// List of colors
+include '../includes/color_options.php';
+
+// List of models
+include '../includes/jacket_models.php';
+
 // Variables to pre-fill the form (default values)
 $model = '';
 $color = '';
 $chest_size = '';
 $shoulder_size = '';
 $price = '';
-
-// List of options for selectors
-$model_options = [
-    'one-button' => 'One-Button',
-    'two-button' => 'Two-Button',
-    'four-button' => 'Four-Button',
-    'single-breasted' => 'Single-Breasted',
-    'double-breasted' => 'Double-Breasted',
-    'smoking' => 'Smoking',
-    'tailcoat' => 'Tailcoat',
-    'smokblazering' => 'Blazer-Sport',
-];
-
-$color_options = [
-    'black' => 'Negro',
-    'dark-blue' => 'Azul marino',
-    'gray' => 'Gris',
-    'dark-gray' => 'Gris oscuro',
-    'white' => 'Blanco',
-    'beige' => 'Beige',
-];
 
 // Check if an ID is provided in the URL
 if (isset($_GET['id'])) {
@@ -162,8 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <select name="model" required>
             <option value="" disabled>Seleccione...</option>
             <?php
-                foreach ($model_options as $valor => $texto) {
-                    echo "<option value='$valor'" . ($model === $valor ? ' selected' : '') . ">$texto</option>";
+                foreach ($model_options as $value => $text) {
+                    echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
                 }
             ?>
         </select><br>
@@ -173,8 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <select name="color" required>
             <option value="" disabled>Seleccione...</option>
             <?php
-                foreach ($color_options as $valor => $texto) {
-                    echo "<option value='$valor'" . ($color === $valor ? ' selected' : '') . ">$texto</option>";
+                foreach ($color_options as $value => $text) {
+                    echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
                 }
             ?>
         </select><br>

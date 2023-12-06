@@ -95,7 +95,9 @@
 
             // Execute the query
             if ($conn->query($sql) === TRUE) {
-                echo isset($_POST['edit_jacket_id']) ? 'Saco editado exitosamente' : 'Saco agregado exitosamente';
+                $message = isset($_POST['edit_jacket_id']) ? 'Saco editado exitosamente' : 'Saco agregado exitosamente';
+                echo "<div class='success-message'>" . $message . "</div>";
+                header("refresh:2;url=./suit_jackets.php");
             } else {
                 echo "Error al agregar el saco: " . $conn->error;
             }

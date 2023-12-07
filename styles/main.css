@@ -8,6 +8,7 @@
 
 :root {
   --brown: #40362d;
+  --transparentBrown: #40362deb;
   --beige: #d9c6a3;
   --lightBeige: #f2e2ce;
   --white: #ffffff;
@@ -51,4 +52,13 @@ input {
 
 input:focus {
   border-bottom: 2.5px solid var(--beige);
+}
+
+/* Remove browser styles in inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--beige) !important;
 }

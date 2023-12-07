@@ -19,22 +19,22 @@ include '../routes/process_signup.php';
         <form id="signup-form" action="signup.php" method="post">
             <div class="input-container">
                 <label for="name"><p>Nombre *</p></label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required placeholder="Nombre">
             </div>
 
             <div class="input-container">
                 <label for="lastname"><p>Apellido *</p></label>
-                <input type="text" id="lastname" name="lastname" required>
+                <input type="text" id="lastname" name="lastname" required placeholder="Apellido">
             </div>
 
             <div class="input-container">
                 <label for="email"><p>Correo electrónico *</p></label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Correo electrónico">
             </div>
 
             <div class="input-container">
                 <label for="password"><p>Contraseña *</p></label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required placeholder="Contraseña">
             </div>
             <button type="submit">Registrar</button>
             <p>¿Ya tienes una cuenta? <a href="./login.php">Inicia sesión</a></p>

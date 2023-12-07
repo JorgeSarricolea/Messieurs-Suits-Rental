@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success_login = true;
     } else {
         // The credentials are incorrect
-        $error_message = 'Credenciales incorrectas.';
+        $error_message = 'Credenciales incorrectas';
     }
 }
 ?>

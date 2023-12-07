@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#login-container,
+#signup-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--brown);
+  color: var(--lightBeige);
+  padding: 60px 160px;
+  border-radius: 25px;
+  gap: 20px;
+  min-width: 800px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 40px;
+}
+
+a {
+  color: var(--lightBeige);
+}

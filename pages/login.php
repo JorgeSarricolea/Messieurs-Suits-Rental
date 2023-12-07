@@ -9,20 +9,25 @@ include '../routes/process_login.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/login_signup.css">
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Iniciar sesión</button>
-    </form>
-
-    <?php
+    <section  id="login-container">
+        <h2>Login</h2>
+        <form id="login-form" action="login.php" method="post">
+            <div class="input-container">
+                <label for="email"><p>Correo electrónico *</p></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="password"><p>Contraseña *</p></label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Iniciar sesión</button>
+            <p>¿No tienes una cuenta? <a href="../pages/signup.php">Registrate</a></p>
+            <?php
     // Message handler
     if (!empty($error_message)) {
         // Show error message if it exists
@@ -46,5 +51,7 @@ include '../routes/process_login.php';
         }
     }
     ?>
+        </form>
+    </section>
 </body>
 </html>

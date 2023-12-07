@@ -1,4 +1,13 @@
 <?php
+$suits = [
+    'two-piece' => 'Two-Piece Suit',
+    'three-piece' => 'Three-Piece Suit',
+    'double-breasted' => 'Double-Breasted Suit',
+    'single-breasted' => 'Single-Breasted Suit',
+    'pinstripe' => 'Pinstripe Suit',
+    'solid-color' => 'Solid Color Suit',
+];
+
 $jackets = [
     'one-button' => 'One-Button',
     'two-button' => 'Two-Button',

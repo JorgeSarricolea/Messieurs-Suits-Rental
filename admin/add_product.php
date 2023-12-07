@@ -14,6 +14,7 @@ include './isAdmin.php'
 <?php include '../includes/side_menu.php'?>
 <nav>
     <ul>
+      <li><a href="./suit_details.php">Trajes</a></li>
       <li><a href="./suit_jacket_details.php">Sacos</a></li>
       <li><a href="./suit_pant_details.php">Pantalones</a></li>
       <li><a href="./shirt_details.php">Camisas</a></li>

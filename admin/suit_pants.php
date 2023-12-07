@@ -8,34 +8,34 @@
 <body>
 
 <?php
-    // Check if the user is an administrator
-    include './isAdmin.php';
+// Check if the user is an administrator
+include './isAdmin.php';
 
-    // Database connection file
-    include '../database/connection.php';
+// Database connection file
+include '../database/connection.php';
 
-    // Side menu
-    include '../includes/side_menu.php';
+// Side menu
+include '../includes/side_menu.php';
 
-    // Product options menu
-    include '../includes/product_options.php';
+// Product options menu
+include '../includes/product_options.php';
 
-    // Function to remove a suit pant
-    function deleteSuitPant($conn, $pantID) {
-        $sql = "DELETE FROM SuitPants WHERE pant_ID = $pantID";
-        if ($conn->query($sql) === TRUE) {
-            $deletion_message = "Pantalón eliminado correctamente";
-            echo "<div class='deletion-message'>" . $deletion_message . "</div>";
-            header("refresh:2;url=./suit_pants.php");
-        } else {
-            $error_message = "Error al eliminar el pantalón";
-            echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";
-        }
+// Function to remove a suit pant
+function deleteSuitPant($conn, $pantID) {
+    $sql = "DELETE FROM SuitPants WHERE pant_ID = $pantID";
+    if ($conn->query($sql) === TRUE) {
+        $deletion_message = "Pantalón eliminado correctamente";
+        echo "<div class='deletion-message'>" . $deletion_message . "</div>";
+        header("refresh:2;url=./suit_pants.php");
+    } else {
+        $error_message = "Error al eliminar el pantalón";
+        echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";
     }
+}
 
-    // Query to get data from SuitPants table
-    $sql = "SELECT * FROM SuitPants";
-    $result = $conn->query($sql);
+// Query to get data from SuitPants table
+$sql = "SELECT * FROM SuitPants";
+$result = $conn->query($sql);
 ?>
 
     <!-- SuitPants table -->
@@ -48,7 +48,7 @@
                 <th>Precio</th>
                 <th>Modelo</th>
                 <th>Color</th>
-                <th>Image</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>

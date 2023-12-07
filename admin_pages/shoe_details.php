@@ -12,7 +12,7 @@ include '../includes/side_menu.php';
 include '../includes/color_options.php';
 
 // List of models
-include '../models/shoe_models.php';
+include '../includes/models.php';
 
 // Variables to pre-fill the form (default values)
 $model = '';
@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <select name="model" required>
             <option value="" disabled>Seleccione...</option>
             <?php
-                foreach ($shoes_options as $value => $text) {
+                foreach ($shoes as $value => $text) {
                     echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
                 }
             ?>

@@ -12,7 +12,7 @@ include '../includes/side_menu.php';
 include '../includes/color_options.php';
 
 // List of models
-include '../includes/shirt_models.php';
+include '../includes/models.php';
 
 // Variables to pre-fill the form (default values)
 $model = '';
@@ -20,9 +20,6 @@ $color = '';
 $chest_size = '';
 $shoulder_size = '';
 $price = '';
-
-// List of options for selectors
-// ...
 
 // Check if an ID is provided in the URL
 if (isset($_GET['id'])) {
@@ -150,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <select name="model" required>
             <option value="" disabled>Seleccione...</option>
             <?php
-                foreach ($model_options as $value => $text) {
+                foreach ($shirts as $value => $text) {
                     echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
                 }
             ?>

@@ -1,0 +1,65 @@
+nav {
+  display: flex;
+  background-color: var(--beige);
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+#logo {
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--brown);
+}
+
+#logo h1 {
+  font-size: 40px;
+  font-family: "Lexend Zetta", sans-serif;
+  text-transform: uppercase;
+}
+
+#logo p {
+  font-family: "Lexend Zetta", sans-serif;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+li a {
+  text-decoration: none;
+  color: var(--brown);
+}
+
+#login-btn {
+  margin-left: 50px;
+  background-color: var(--brown);
+  color: var(--lightBeige);
+  padding: 10px 15px;
+  border-radius: 25px;
+  transition: 0.3s ease-in-out;
+}
+
+#signup-btn {
+  padding: 10px 15px;
+  border-radius: 25px;
+  transition: 0.3s ease-in-out;
+}
+
+#login-btn:hover {
+  background-color: transparent;
+  color: var(--brown);
+  font-weight: bold;
+}
+
+#signup-btn:hover {
+  background-color: var(--brown);
+  color: var(--lightBeige);
+}
+
+#logout-btn {
+}

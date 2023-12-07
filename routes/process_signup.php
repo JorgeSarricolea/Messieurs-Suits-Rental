@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->rowCount() > 0) {
         // Email is already registered, handle error as necessary
-        $error_message = 'El correo electrónico ya está registrado.';
+        $error_message = 'El correo electrónico ya está registrado';
     } else {
         // Hashing the password before storing it in the database
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);

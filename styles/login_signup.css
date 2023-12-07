@@ -23,7 +23,8 @@ h2 {
   min-width: 800px;
 }
 
-#login-form {
+#login-form,
+#signup-form {
   display: flex;
   flex-direction: column;
   gap: 20px;

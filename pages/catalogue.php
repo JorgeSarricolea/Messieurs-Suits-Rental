@@ -17,15 +17,16 @@ include '../includes/header.php';
   </div>
 
   <div>
-    <div class="filter-option" onclick="filterCatalog('SuitJackets')">Sacos</div>
-    <div class="filter-option" onclick="filterCatalog('SuitPants')">Pantalones</div>
-    <div class="filter-option" onclick="filterCatalog('Shirts')">Camisas</div>
-    <div class="filter-option" onclick="filterCatalog('Ties')">Corbatas</div>
-    <div class="filter-option" onclick="filterCatalog('Shoes')">Zapatos</div>
+    <div class="filter-option" onclick="filterCatalogue('Suits')">Trajes</div>
+    <div class="filter-option" onclick="filterCatalogue('SuitJackets')">Sacos</div>
+    <div class="filter-option" onclick="filterCatalogue('SuitPants')">Pantalones</div>
+    <div class="filter-option" onclick="filterCatalogue('Shirts')">Camisas</div>
+    <div class="filter-option" onclick="filterCatalogue('Ties')">Corbatas</div>
+    <div class="filter-option" onclick="filterCatalogue('Shoes')">Zapatos</div>
   </div>
 
-  <!-- Catalogue element -->
-  <div id="catalog"></div>
+  <!-- catalogueue element -->
+  <div id="catalogue"></div>
 
   <script src="../js/catalogue.js"></script>
 </body>

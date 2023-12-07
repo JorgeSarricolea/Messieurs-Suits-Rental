@@ -2,12 +2,12 @@
 // Database connection file
 include '../database/connection.php';
 
-// Query to get the SuitJackets table
-$sql = "SELECT chest_size, shoulder_size, price, model, color, image_src FROM SuitJackets";
+// Query to get the Suits table
+$sql = "SELECT price, model, color, image_src FROM Suits";
 $stmt = $pdo->query($sql);
 
 // Get all the rows
-$suitJackets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$suits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!-- Swiper CSS src -->
@@ -34,12 +34,12 @@ $suitJackets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- Swiper -->
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <?php foreach ($suitJackets as $jacket): ?>
+    <?php foreach ($suits as $suit): ?>
     <div class="swiper-slide">
-      <img src="<?php echo htmlspecialchars($jacket['image_src']); ?>" alt="Jacket Image">
-      <h3><?php echo htmlspecialchars($jacket['model']); ?></h3>
-      <p>Color: <?php echo htmlspecialchars($jacket['color']); ?></p>
-      <p>Price: $<?php echo htmlspecialchars(number_format($jacket['price'], 2)); ?></p>
+      <img src="<?php echo htmlspecialchars($suit['image_src']); ?>" alt="suit Image">
+      <h3><?php echo htmlspecialchars($suit['model']); ?></h3>
+      <p>Color: <?php echo htmlspecialchars($suit['color']); ?></p>
+      <p>Price: $<?php echo htmlspecialchars(number_format($suit['price'], 2)); ?></p>
     </div>
     <?php endforeach; ?>
   </div>

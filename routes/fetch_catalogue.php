@@ -4,15 +4,15 @@ include '../database/connection.php';
 
 // Function to clean up input type and prevent SQL injections
 function cleanType($type) {
-    $validTypes = ['SuitJackets', 'SuitPants', 'Shirts', 'Ties', 'Shoes'];
-    return in_array($type, $validTypes) ? $type : 'SuitJackets';
+    $validTypes = ['Suits', 'SuitJackets', 'SuitPants', 'Shirts', 'Ties', 'Shoes'];
+    return in_array($type, $validTypes) ? $type : 'Suits';
 }
 
 // Set content type as JSON
 header('Content-Type: application/json');
 
 // Get the type and search parameter of the request
-$type = isset($_GET['type']) ? cleanType($_GET['type']) : 'SuitJackets';
+$type = isset($_GET['type']) ? cleanType($_GET['type']) : 'Suits';
 $search = $_GET['search'] ?? '';
 
 // Prevent SQL injection for type

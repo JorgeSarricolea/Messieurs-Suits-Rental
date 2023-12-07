@@ -22,14 +22,14 @@ function search(filterType) {
 }
 
 function fetchCatalogue(type, search) {
-  // AJAX call to your PHP file
+  // AJAX call to PHP file
   fetch(`php/../../routes/fetch_catalogue.php?type=${type}&search=${search}`)
     .then((response) => response.json())
     .then((data) => {
       const catalogue = document.getElementById("catalogue");
-      catalogue.innerHTML = ""; // Clear the current catalog
+      catalogue.innerHTML = ""; // Clear the current catalogue
       data.forEach((item) => {
-        // Create and add each item to the catalog
+        // Create and add each item to the catalogue
         const div = document.createElement("div");
         div.className = "catalogue-item";
         div.innerHTML = `
@@ -44,5 +44,5 @@ function fetchCatalogue(type, search) {
     .catch((error) => console.error("Error:", error));
 }
 
-// Start the catalog with default SuitJackets
+// Start the catalog with default Suits
 filterCatalogue("Suits");

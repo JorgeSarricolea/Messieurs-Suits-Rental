@@ -36,8 +36,44 @@ h2 {
   flex-direction: column;
 }
 
+/* Buttons */
+
 button {
   margin-top: 40px;
+}
+
+/* Inputs */
+
+.input-container label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.input-container:focus-within label {
+  opacity: 1;
+}
+
+.input-container {
+  position: relative;
+}
+
+input::placeholder {
+  color: var(--beige);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input {
+  padding-right: 30px;
+}
+
+.input-container i {
+  position: absolute;
+  bottom: 10%;
+  right: 10px;
+  transform: translateY(-50%);
 }
 
 a {

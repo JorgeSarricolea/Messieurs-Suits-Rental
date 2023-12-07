@@ -11,7 +11,11 @@ include '../routes/process_login.php';
     <!-- Main CSS Files -->
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/login_signup.css">
-    <title>Login</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Iniciar sesión</title>
 </head>
 <body>
     <section  id="login-container">
@@ -19,12 +23,14 @@ include '../routes/process_login.php';
         <form id="login-form" action="login.php" method="post">
             <div class="input-container">
                 <label for="email"><p>Correo electrónico *</p></label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                <i class="fa-regular fa-envelope"></i>
             </div>
 
             <div class="input-container">
                 <label for="password"><p>Contraseña *</p></label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <i class="fa-solid fa-lock"></i>
             </div>
             <button type="submit">Iniciar sesión</button>
             <p>¿No tienes una cuenta? <a href="./signup.php">Registrate</a></p>

@@ -1,8 +1,11 @@
 <?php
+// Start session
 session_start();
+
+// Header
 include '../includes/header.php';
 
-// Testing
-echo 'Usuario con ID: ' . $_SESSION['user_id'];
+// Carousel
+include '../includes/carousel.php';
 ?>
 

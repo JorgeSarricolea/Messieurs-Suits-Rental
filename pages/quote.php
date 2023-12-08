@@ -69,5 +69,10 @@ include '../includes/header.php';
       <input id="send-btn" type="submit" value="Enviar">
     </form>
   </main>
+
+  <?php
+  // Footer
+  include '../includes/footer.php';
+  ?>
 </body>
 </html>

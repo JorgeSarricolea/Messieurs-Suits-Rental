@@ -1,4 +1,8 @@
+<!-- Main CSS File -->
 <link rel="stylesheet" href="../styles/footer.css">
+<!-- Font Awesome src -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <footer>
   <h3>Powered by <a href="https://jorgesarricolea.com" target="_blank">Jorge Sarricolea</a></h3>
   <div id="social-icons">

@@ -54,6 +54,10 @@ include '../includes/header.php';
     </form>
   </main>
 
+  <?php
+  // Footer
+  include '../includes/footer.php';
+  ?>
   <!-- Main JS File -->
   <script src="../js/contact.js"></script>
 </body>

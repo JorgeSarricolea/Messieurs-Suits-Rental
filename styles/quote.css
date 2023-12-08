@@ -1,0 +1,80 @@
+#main-container {
+  margin: 40px auto;
+  display: flex;
+  width: 80%;
+  gap: 80px;
+}
+
+/* Text container */
+
+#text-container h1 {
+  font-size: 42px;
+  font-weight: 500;
+}
+
+#text-container span {
+  font-weight: bold;
+}
+
+#text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Form */
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--brown);
+  color: var(--lightBeige);
+  padding: 40px;
+  border-radius: 25px;
+  align-content: center;
+  width: 80%;
+}
+
+form h2 {
+  margin-top: 50px;
+}
+
+.input-container {
+  margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.input-container:focus-within label {
+  opacity: 1;
+}
+
+input::placeholder {
+  color: var(--beige);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+#send-btn {
+  background-color: var(--beige);
+  color: var(--brown);
+  font-size: larger;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 40px auto 0;
+  width: 50%;
+}
+
+#send-btn:hover {
+  background-color: var(--lightBeige);
+}

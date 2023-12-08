@@ -29,7 +29,7 @@ form {
   flex-direction: column;
   background-color: var(--brown);
   color: var(--lightBeige);
-  padding: 40px;
+  padding: 40px 150px;
   border-radius: 25px;
   align-content: center;
   width: 80%;

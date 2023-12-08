@@ -1,3 +1,27 @@
+/* main container */
+
+#main-container {
+  margin: 40px auto;
+  display: flex;
+  width: 80%;
+  gap: 80px;
+}
+
+/* Location */
+
+#location {
+  justify-content: center;
+}
+
+#location h1 {
+  font-size: 42px;
+}
+
+#location iframe {
+  margin-top: 40px;
+  border-radius: 25px;
+}
+
 /* Form */
 
 form {
@@ -5,11 +29,10 @@ form {
   flex-direction: column;
   background-color: var(--brown);
   color: var(--lightBeige);
-  padding: 40px 200px;
+  padding: 40px 150px;
   border-radius: 25px;
   align-content: center;
   width: 50%;
-  margin: 40px auto;
 }
 
 .input-container {

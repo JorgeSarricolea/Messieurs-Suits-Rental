@@ -1,0 +1,70 @@
+/* Form */
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--brown);
+  color: var(--lightBeige);
+  padding: 40px 200px;
+  border-radius: 25px;
+  align-content: center;
+  width: 50%;
+  margin: 40px auto;
+}
+
+.input-container {
+  margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.input-container:focus-within label {
+  opacity: 1;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--beige);
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--lightBeige);
+  color: var(--lightBeige);
+  padding-left: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+#send-btn {
+  background-color: var(--beige);
+  color: var(--brown);
+  font-size: larger;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 40px auto 0;
+  width: 50%;
+}
+
+#send-btn:hover {
+  background-color: var(--lightBeige);
+}
+
+#success-message {
+  margin-top: 20px;
+  color: var(--lightBeige);
+}

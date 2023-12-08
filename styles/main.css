@@ -41,7 +41,8 @@ button:hover {
 
 /* Inputs */
 
-input {
+input,
+textarea {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--beige);
@@ -51,15 +52,25 @@ input {
   outline: none;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   border-bottom: 2.5px solid var(--beige);
 }
 
 /* Remove browser styles in inputs */
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--beige) !important;
+}
+
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: var(--beige) !important;
 }

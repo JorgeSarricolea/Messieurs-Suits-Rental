@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../styles/header.css">
+
 <nav>
     <a id="logo" href="../pages/index.php">
         <h1>messieurs</h1>

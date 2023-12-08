@@ -13,7 +13,6 @@ include '../includes/header.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Main CSS Files -->
   <link rel="stylesheet" href="../styles/main.css">
-  <link rel="stylesheet" href="../styles/header.css">
   <link rel="stylesheet" href="../styles/index.css">
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -81,5 +80,10 @@ include '../includes/header.php';
       </div>
     </div>
   </section>
+
+  <?php
+  // Footer
+  include '../includes/footer.php';
+  ?>
 </body>
 </html>

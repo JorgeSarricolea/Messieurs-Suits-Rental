@@ -35,6 +35,10 @@ li a {
   color: var(--brown);
 }
 
+li a:hover {
+  font-weight: bold;
+}
+
 #login-btn {
   margin-left: 50px;
   background-color: var(--brown);

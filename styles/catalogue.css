@@ -1,0 +1,32 @@
+#searchbox {
+  position: relative;
+  background-color: var(--brown);
+  display: flex;
+  margin: 40px auto;
+  padding: 20px;
+  width: 70%;
+  border-radius: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchbox input[type="text"] {
+  background-color: var(--white);
+  border-radius: 25px;
+  margin: 0;
+  color: var(--brown);
+  width: 80%;
+  padding: 20px;
+}
+
+#searchbox i {
+  position: absolute;
+  top: 0;
+  right: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--brown);
+  font-size: larger;
+}

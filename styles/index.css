@@ -146,3 +146,40 @@
 iframe {
   border-radius: 25px;
 }
+
+/* Testimonials */
+
+#testimonials {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 40px auto;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+#testimonials .main-container {
+  display: flex;
+  gap: 40px;
+}
+
+.testimonial-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--beige);
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.stars {
+  color: var(--lightBeige);
+  font-size: larger;
+  margin-bottom: 20px;
+}
+
+.user-name {
+  font-weight: bold;
+  width: fit-content;
+  align-self: flex-end;
+}

@@ -15,6 +15,8 @@ include '../includes/header.php';
   <link rel="stylesheet" href="../styles/main.css">
   <link rel="stylesheet" href="../styles/header.css">
   <link rel="stylesheet" href="../styles/index.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Messieurs | Suits Rental</title>
 </head>
 <body>
@@ -39,6 +41,45 @@ include '../includes/header.php';
   <section id="video">
     <h1>¡No dejes que la ropa te vista, tu viste la ropa!</h1>
     <iframe width="660" height="400" src="https://www.youtube.com/embed/-nTfrtzsup8?si=ySjXPTlzbvN99etg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h1>Reseñas</h1>
+    <div class="main-container">
+      <div class="testimonial-container">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque in ipsum explicabo quibusdam impedit? Eos minus harum optio nobis fugiat.</p>
+        <p class="user-name">- José Juan</p>
+      </div>
+
+      <div class="testimonial-container">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque in ipsum explicabo quibusdam impedit? Eos minus harum optio nobis fugiat.</p>
+        <p class="user-name">- Samuel Dzip</p>
+      </div>
+
+      <div class="testimonial-container">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque in ipsum explicabo quibusdam impedit? Eos minus harum optio nobis fugiat.</p>
+        <p class="user-name">- Alejandro Pérez</p>
+      </div>
+    </div>
   </section>
 </body>
 </html>

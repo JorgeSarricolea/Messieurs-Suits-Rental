@@ -62,4 +62,13 @@ li a {
 }
 
 #logout-btn {
+  margin-left: 50px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  transition: 0.3s ease-in-out;
+}
+
+#logout-btn:hover {
+  background-color: var(--brown);
+  color: var(--lightBeige);
 }

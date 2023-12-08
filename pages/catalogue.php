@@ -37,6 +37,11 @@ include '../includes/header.php';
     <!-- catalogueue element -->
     <div id="catalogue"></div>
   </section>
+
+  <?php
+  // Footer
+  include '../includes/footer.php';
+  ?>
   <script src="../js/catalogue.js"></script>
 </body>
 </html>

@@ -1,17 +1,14 @@
 <!-- Main CSS File -->
 <link rel="stylesheet" href="../styles/product_options.css">
+<link rel="stylesheet" href="../styles/admin_tables.css">
 <link rel="stylesheet" href="../styles/main.css">
 
 <!-- To get the current page path -->
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
 
-$is_table_visible = false;
-
-// Suppose the user is on the suits page and want to display the table
-if ($current_page === 'suits.php') {
-    $is_table_visible = true;
-}
+$pagesWithTable = ['suits.php', 'suit_jackets.php', 'suit_pants.php', 'shirts.php', 'ties.php', 'shoes.php'];
+$is_table_visible = in_array($current_page, $pagesWithTable);
 ?>
 
 <nav id="product-options" class="<?php echo $is_table_visible ? 'with-table' : ''; ?>">
@@ -34,7 +31,7 @@ if ($current_page === 'suits.php') {
             $isActive = ($current_page === $link);
             $class = $isActive ? 'current' : '';
             ?>
-            <li class="<?php echo $class . ($is_table_visible ? ' with-table' : '');?>" >
+            <li class="<?php echo $class . ($is_table_visible ? ' with-table' : ''); ?>" >
                 <img class="<?php echo $is_table_visible ? 'with-table' : ''; ?>" width="64" height="64" src="<?php echo $icon; ?>" alt="<?php echo $icon; ?>"/>
                 <a href="./<?php echo $link; ?>"><?php echo $pageName; ?></a>
             </li>

@@ -34,7 +34,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <section id="main-container">
+    <section id="main-table">
         <?php
         // Product options menu
         include '../includes/product_options.php';
@@ -69,15 +69,17 @@
                     echo "<td>" . $row["shoulder_size"] . "</td>";
                     echo "<td>" . $row["hip_size"] . "</td>";
                     echo "<td>" . $row["waist_size"] . "</td>";
-                    echo "<td><img src='" . $row["image_src"] . "' alt='img' style='max-width: 80px; max-height: 80px;'></td>";
+                    echo "<td><img src='" . $row["image_src"] . "' alt='img'></td>";
                     echo "<td>";
                     // Edit link
-                    echo "<a href='suit_details.php?id=" . $row["ID"] . "'>edit</a>";
+                    echo "<a id='edit-btn' href='suit_details.php?id=" . $row["ID"] . "'><i class='fa-solid fa-pen-to-square'></i></a>";
                     // Deleting element by form
                     echo "<form method='post' action=''>";
                     echo "<input type='hidden' name='delete' value='1' />";
                     echo "<input type='hidden' name='suit_id' value='" . $row["ID"] . "' />";
-                    echo "<button type='button' onclick='confirmDeletion(event, " . $row["ID"] . ")'>Eliminar</button>";
+                    echo "<button id='delete-btn' type='button' onclick='confirmDeletion(event, " . $row["ID"] . ")'>";
+                    echo "<i class='fa-solid fa-trash'></i>";
+                    echo "</button>";
                     echo "</form>";
                     echo "</td>";
                     echo "</tr>";
@@ -100,7 +102,6 @@
             </tbody>
         </table>
     </section>
-
 
   <script>
       // Function to confirm the deletion of the element with the ID suitID

@@ -1,0 +1,51 @@
+#main-table {
+  margin: 40px;
+}
+
+#main-table table {
+  margin-top: 40px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#main-table th,
+#main-table td {
+  padding: 3px 10px;
+  border: 1px solid var(--brown);
+  text-align: left;
+}
+
+#main-table th {
+  background-color: var(--brown);
+  color: var(--lightBeige);
+}
+
+#main-table img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+#main-table td:last-child,
+#main-table th:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+#main-table button,
+#edit-btn {
+  text-decoration: none;
+  font-size: 32px;
+  background-color: transparent;
+}
+
+#delete-btn:hover {
+  color: red;
+}
+
+#edit-btn:hover {
+  color: green;
+}

@@ -51,7 +51,7 @@
 
 #product-options li.current {
   font-weight: bold;
-  background-color: var(--lightBeige);
+  background-color: var(--beige);
 }
 
 #product-options.current {

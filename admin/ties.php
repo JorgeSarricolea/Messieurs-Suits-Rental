@@ -17,9 +17,6 @@
     // Side menu
     include '../includes/side_menu.php';
 
-    // Product options menu
-    include '../includes/product_options.php';
-
     // Function to remove a tie
     function deleteTie($conn, $tieID) {
         $sql = "DELETE FROM Ties WHERE tie_ID = $tieID";
@@ -38,60 +35,68 @@
     $result = $conn->query($sql);
 ?>
 
-    <!-- Ties table -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Talla</th>
-                <th>Precio</th>
-                <th>Modelo</th>
-                <th>Color</th>
-                <th>Image</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-
+    <section id="main-table">
         <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["tie_ID"] . "</td>";
-                echo "<td>" . $row["size"] . "</td>";
-                echo "<td>" . $row["price"] . "</td>";
-                echo "<td>" . $row["model"] . "</td>";
-                echo "<td>" . $row["color"] . "</td>";
-                echo "<td><img src='" . $row["image_src"] . "' alt='img' style='max-width: 80px; max-height: 80px;'></td>";
-                echo "<td>";
-                // Edit link
-                echo "<a href='tie_details.php?id=" . $row["tie_ID"] . "'>edit</a>";
-                // Deleting element by form
-                echo "<form method='post' action=''>";
-                echo "<input type='hidden' name='delete' value='1' />";
-                echo "<input type='hidden' name='tie_id' value='" . $row["tie_ID"] . "' />";
-                echo "<button type='button' onclick='confirmDeletion(event, " . $row["tie_ID"] . ")'>Eliminar</button>";
-                echo "</form>";
-                echo "</td>";
-                echo "</tr>";
-            }
-        } else {
-            // If there is no data in the table
-            echo "<tr><td colspan='7'>No hay datos disponibles</td></tr>";
-        }
-
-        // Tie removal if form has been submitted
-        if (isset($_POST['delete'])) {
-            $tieID = $_POST['tie_id'];
-            deleteTie($conn, $tieID);
-        }
-
-        // Close the connection to the database
-        $conn->close();
+        // Product options menu
+        include '../includes/product_options.php';
         ?>
+        <!-- Ties table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Talla</th>
+                    <th>Precio</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Image</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["tie_ID"] . "</td>";
+                    echo "<td>" . $row["size"] . "</td>";
+                    echo "<td>" . $row["price"] . "</td>";
+                    echo "<td>" . $row["model"] . "</td>";
+                    echo "<td>" . $row["color"] . "</td>";
+                    echo "<td><img src='" . $row["image_src"] . "' alt='img'></td>";
+                    echo "<td>";
+                    // Edit link
+                    echo "<a id='edit-btn' href='tie_details.php?id=" . $row["tie_ID"] . "'><i class='fa-solid fa-pen-to-square'></i></a>";
+                    // Deleting element by form
+                    echo "<form method='post' action=''>";
+                    echo "<input type='hidden' name='delete' value='1' />";
+                    echo "<input type='hidden' name='tie_id' value='" . $row["tie_ID"] . "' />";
+                    echo "<button id='delete-btn' type='button' onclick='confirmDeletion(event, " . $row["tie_ID"] . ")'>";
+                    echo "<i class='fa-solid fa-trash'></i>";
+                    echo "</button>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                // If there is no data in the table
+                echo "<tr><td colspan='7'>No hay datos disponibles</td></tr>";
+            }
+
+            // Tie removal if form has been submitted
+            if (isset($_POST['delete'])) {
+                $tieID = $_POST['tie_id'];
+                deleteTie($conn, $tieID);
+            }
+
+            // Close the connection to the database
+            $conn->close();
+            ?>
+
+            </tbody>
+        </table>
+    </section>
 
     <script>
         // Function to confirm the deletion of the element with the ID tieID

@@ -61,3 +61,49 @@
 .filter-option:hover {
   font-weight: bold;
 }
+
+/* Catalogue */
+
+#catalogue {
+  border: 1px solid var(--brown);
+  border-radius: 25px;
+  padding: 40px 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.catalogue-item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--beige);
+  padding: 20px;
+  border-radius: 25px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogue-item h3 {
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.catalogue-item p span {
+  text-transform: uppercase;
+}
+
+#price-text {
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.catalogue-item img {
+  border-radius: 25px;
+  max-width: 100%;
+  object-fit: cover;
+  height: 370px;
+}

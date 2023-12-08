@@ -35,8 +35,8 @@ function fetchCatalogue(type, search) {
         div.innerHTML = `
           <img src="${item.image_src}" alt="${item.model}">
           <h3>${item.model}</h3>
-          <p>Color: ${item.color}</p>
-          <p>Price: $${item.price.toFixed(2)}</p>
+          <p>Color: <span>${item.color}</span></p>
+          <p id="price-text">Price: $${item.price.toFixed(2)}</p>
         `;
         catalogue.appendChild(div);
       });

@@ -33,7 +33,7 @@ include '../includes/header.php';
       <div class="filter-option" onclick="filterCatalogue('Ties')">Corbatas</div>
       <div class="filter-option" onclick="filterCatalogue('Shoes')">Zapatos</div>
     </div>
-  
+
     <!-- catalogueue element -->
     <div id="catalogue"></div>
   </section>

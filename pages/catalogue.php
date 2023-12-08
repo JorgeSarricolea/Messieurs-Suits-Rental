@@ -22,19 +22,21 @@ include '../includes/header.php';
     <i class="fa-solid fa-magnifying-glass" onclick="search()"></i>
   </div>
 
-  <!-- Filters -->
-  <div>
-    <div class="filter-option" onclick="filterCatalogue('Suits')">Trajes</div>
-    <div class="filter-option" onclick="filterCatalogue('SuitJackets')">Sacos</div>
-    <div class="filter-option" onclick="filterCatalogue('SuitPants')">Pantalones</div>
-    <div class="filter-option" onclick="filterCatalogue('Shirts')">Camisas</div>
-    <div class="filter-option" onclick="filterCatalogue('Ties')">Corbatas</div>
-    <div class="filter-option" onclick="filterCatalogue('Shoes')">Zapatos</div>
-  </div>
-
-  <!-- catalogueue element -->
-  <div id="catalogue"></div>
-
+  <section id="catalogue-container">
+    <!-- Filters -->
+    <div id="filters">
+      <h2>Filtros</h2>
+      <div class="filter-option" onclick="filterCatalogue('Suits')">Trajes</div>
+      <div class="filter-option" onclick="filterCatalogue('SuitJackets')">Sacos</div>
+      <div class="filter-option" onclick="filterCatalogue('SuitPants')">Pantalones</div>
+      <div class="filter-option" onclick="filterCatalogue('Shirts')">Camisas</div>
+      <div class="filter-option" onclick="filterCatalogue('Ties')">Corbatas</div>
+      <div class="filter-option" onclick="filterCatalogue('Shoes')">Zapatos</div>
+    </div>
+  
+    <!-- catalogueue element -->
+    <div id="catalogue"></div>
+  </section>
   <script src="../js/catalogue.js"></script>
 </body>
 </html>

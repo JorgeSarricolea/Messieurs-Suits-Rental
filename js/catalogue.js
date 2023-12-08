@@ -1,10 +1,10 @@
 function filterCatalogue(type) {
-  // Highlight the active filter option
+  // Highlight the selected filter option
   document.querySelectorAll(".filter-option").forEach((element) => {
     if (element.textContent === type) {
-      element.classList.add("active");
+      element.style.fontWeight = "bold";
     } else {
-      element.classList.remove("active");
+      element.style.fontWeight = "";
     }
   });
 

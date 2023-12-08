@@ -34,5 +34,11 @@ include '../includes/header.php';
       include '../includes/carousel.php';
       ?>
   </section>
+
+  <!-- Video frame -->
+  <section id="video">
+    <h1>¡No dejes que la ropa te vista, tu viste la ropa!</h1>
+    <iframe width="660" height="400" src="https://www.youtube.com/embed/-nTfrtzsup8?si=ySjXPTlzbvN99etg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
 </body>
 </html>

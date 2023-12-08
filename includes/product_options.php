@@ -1,10 +1,45 @@
-<nav>
-    <ul>
-      <li><a href="./suits.php">Trajes</a></li>
-      <li><a href="./suit_jackets.php">Sacos</a></li>
-      <li><a href="./suit_pants.php">Pantalones</a></li>
-      <li><a href="./shirts.php">Camisas</a></li>
-      <li><a href="./ties.php">Corbatas</a></li>
-      <li><a href="./shoes.php">Zapatos</a></li>
+<!-- Main CSS File -->
+<link rel="stylesheet" href="../styles/product_options.css">
+<link rel="stylesheet" href="../styles/main.css">
+
+<!-- To get the current page path -->
+<?php
+$current_page = basename($_SERVER['PHP_SELF']);
+
+$is_table_visible = false;
+
+// Suppose the user is on the suits page and want to display the table
+if ($current_page === 'suits.php') {
+    $is_table_visible = true;
+}
+?>
+
+<nav id="product-options" class="<?php echo $is_table_visible ? 'with-table' : ''; ?>">
+    <ul class="<?php echo $is_table_visible ? 'with-table' : ''; ?>">
+        <?php
+        // Define links and their associated icons
+        $links = [
+            'suits.php' => ['Trajes', 'https://img.icons8.com/external-wanicon-solid-wanicon/64/external-suit-autumn-clothes-accesories-wanicon-solid-wanicon.png" alt="external-suit-autumn-clothes-accesories-wanicon-solid-wanicon'],
+            'suit_jackets.php' => ['Sacos', 'https://img.icons8.com/external-wanicon-solid-wanicon/64/external-suit-autumn-clothes-accesories-wanicon-solid-wanicon.png" alt="external-suit-autumn-clothes-accesories-wanicon-solid-wanicon'],
+            'suit_pants.php' => ['Pantalones', 'https://img.icons8.com/glyph-neue/64/trousers.png'],
+            'shirts.php' => ['Camisas', 'https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/external-ironed-cleaning-kiranshastry-solid-kiranshastry.png" alt="external-ironed-cleaning-kiranshastry-solid-kiranshastry'],
+            'ties.php' => ['Corbatas', 'https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/external-tie-man-accessories-kiranshastry-solid-kiranshastry.png" alt="external-tie-man-accessories-kiranshastry-solid-kiranshastry'],
+            'shoes.php' => ['Zapatos', 'https://img.icons8.com/external-those-icons-fill-those-icons/96/external-shoe-wedding-those-icons-fill-those-icons-1.png" alt="external-shoe-wedding-those-icons-fill-those-icons-1']
+        ];
+
+        // Generate list items for each link
+        foreach ($links as $link => $data) {
+            $pageName = $data[0];
+            $icon = $data[1];
+            $isActive = ($current_page === $link);
+            $class = $isActive ? 'current' : '';
+            ?>
+            <li class="<?php echo $class . ($is_table_visible ? ' with-table' : '');?>" >
+                <img class="<?php echo $is_table_visible ? 'with-table' : ''; ?>" width="64" height="64" src="<?php echo $icon; ?>" alt="<?php echo $icon; ?>"/>
+                <a href="./<?php echo $link; ?>"><?php echo $pageName; ?></a>
+            </li>
+            <?php
+        }
+        ?>
     </ul>
 </nav>

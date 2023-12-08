@@ -1,0 +1,82 @@
+#product-options {
+  margin-left: 40px;
+  margin: 0 auto;
+  width: 60%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#product-options img {
+  fill: var(--brown);
+}
+
+#product-options li {
+  width: calc(33.33% - 20px);
+  margin: 10px;
+  padding: 40px;
+  font-size: 32px;
+  border-radius: 25px;
+  gap: 20px;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+#product-options li:hover {
+  font-weight: bold;
+  background-color: var(--beige);
+}
+
+#product-options ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#product-options a {
+  text-decoration: none;
+  color: var(--brown);
+  display: flex;
+  align-items: center;
+}
+
+#product-options i {
+  font-size: 32px;
+}
+
+#product-options li.current {
+  font-weight: bold;
+  background-color: var(--lightBeige);
+}
+
+#product-options.current {
+  min-height: none;
+}
+
+/* When a table is visible */
+
+#product-options.with-table {
+  min-height: 0;
+  width: 80%;
+  font-size: larger;
+}
+
+#product-options ul.with-table {
+  flex-wrap: nowrap;
+}
+
+#product-options li.with-table {
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#product-options img.with-table {
+  width: 40px;
+  height: 40px;
+}

@@ -4,9 +4,6 @@ include './isAdmin.php';
 
 // Side menu
 include '../includes/side_menu.php';
-
-// Product options
-include '../includes/product_options.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,5 +14,9 @@ include '../includes/product_options.php';
   <title>Productos</title>
 </head>
 <body>
+  <?php
+  // Product options
+  include '../includes/product_options.php';
+  ?>
 </body>
 </html>

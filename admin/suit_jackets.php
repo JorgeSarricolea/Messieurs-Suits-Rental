@@ -23,7 +23,8 @@
         if ($conn->query($sql) === TRUE) {
             $deletion_message = "Saco eliminado correctamente";
             echo "<div class='deletion-message'>" . $deletion_message . "</div>";
-            header("refresh:2;url=./suit_jackets.php");
+            echo "<script>setTimeout(function() { window.location.href = './suit_jackets.php'; }, 2000);</script>";
+            exit();
         } else {
             $error_message = "Error al eliminar el saco";
             echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";
@@ -73,7 +74,7 @@
                     // Deleting element by form
                     echo "<form method='post' action=''>";
                     echo "<input type='hidden' name='delete' value='1' />";
-                    echo "<input type='hidden' name='jacet_id' value='" . $row["jacket_ID"] . "' />";
+                    echo "<input type='hidden' name='jacket_id' value='" . $row["jacket_ID"] . "' />";
                     echo "<button id='delete-btn' type='button' onclick='confirmDeletion(event, " . $row["jacket_ID"] . ")'>";
                     echo "<i class='fa-solid fa-trash'></i>";
                     echo "</button>";

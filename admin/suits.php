@@ -22,7 +22,7 @@
         if ($conn->query($sql) === TRUE) {
             $deletion_message = "Traje eliminado correctamente";
             echo "<div class='deletion-message'>" . $deletion_message . "</div>";
-            header("refresh:2;url=./suits.php");
+            echo "<script>setTimeout(function() { window.location.href = './suits.php'; }, 2000);</script>";
         } else {
             $error_message = "Error al eliminar el traje";
             echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";

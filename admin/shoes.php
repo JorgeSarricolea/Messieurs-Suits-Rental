@@ -23,7 +23,7 @@
         if ($conn->query($sql) === TRUE) {
             $deletion_message = "Zapato eliminado correctamente";
             echo "<div class='deletion-message'>" . $deletion_message . "</div>";
-            header("refresh:2;url=./shoes.php");
+            echo "<script>setTimeout(function() { window.location.href = './shoes.php'; }, 2000);</script>";
         } else {
             $error_message = "Error al eliminar el zapato";
             echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";

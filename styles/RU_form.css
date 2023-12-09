@@ -69,7 +69,7 @@ select:focus::placeholder {
 
 #RU-form img {
   min-width: 100%;
-  min-height: 60%;
+  min-height: 500px;
   object-fit: cover;
   border-radius: 25px;
 }
@@ -86,21 +86,18 @@ select:focus::placeholder {
   background-color: var(--beige);
 }
 
-#img-btn {
+#img-btn input {
   width: 100%;
-  padding: 10px;
   border: 2px dashed var(--lightBeige);
   border-radius: 4px;
   font-size: 16px;
   margin-bottom: 10px;
   cursor: pointer;
-  padding: 20px;
   align-items: center;
   justify-content: center;
 }
 
-/* Cambia el aspecto cuando el cursor pasa sobre el botón */
-#img-btn:hover {
+#img-btn input:hover {
   background-color: var(--lightBeige);
   color: var(--brown);
 }

@@ -120,10 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $sql = "INSERT INTO Suits (color, model, chest_size, shoulder_size, hip_size, waist_size, image_src, price) VALUES ('$color', '$model', $chest_size, $shoulder_size, $hip_size,  $waist_size, '$img_path',$price)";
   }
 
-  // Execute the query
-  $status = ""; // Initialize the state variable
-
     // Execute the query
+    $status = ""; // Initialize the state variable
     if ($conn->query($sql) === TRUE) {
         $success_message = isset($_POST['edit_suit_id']) ? 'Traje editado exitosamente' : 'Traje agregado exitosamente';
         $status = "success"; // success status
@@ -147,96 +145,92 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title><?php echo isset($edit_suit_id) ? 'Editar' : 'Agregar'; ?> traje</title>
 </head>
 <body>
-<form id="RU-form" action="./suit_details.php" method="post" enctype="multipart/form-data">
-    <?php
-    // Show the status message
-    if ($status === "success") {
-        echo "<div class='success-message'>" . $success_message . "</div>";
-    } elseif ($status === "error") {
-        echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
-    }
-    ?>
+    <form id="RU-form" action="./suit_details.php" method="post" enctype="multipart/form-data">
+        <?php
+        // Show the status message
+        if ($status === "success") {
+            echo "<div class='success-message'>" . $success_message . "</div>";
+        } elseif ($status === "error") {
+            echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        }
+        ?>
 
-    <!-- Hidden field for ID in case of editing -->
-    <?php if (isset($edit_suit_id)) { ?>
-        <input type="hidden" name="edit_suit_id" value="<?php echo $edit_suit_id; ?>">
-    <?php } ?>
+        <!-- Hidden field for ID in case of editing -->
+        <?php if (isset($edit_suit_id)) { ?>
+            <input type="hidden" name="edit_suit_id" value="<?php echo $edit_suit_id; ?>">
+        <?php } ?>
 
-    <div class="form-container">
-        <div id="form-data">
-            <h2><?php echo isset($edit_suit_id) ? 'Editar' : 'Agregar'; ?> traje</h2>
+        <div class="form-container">
+            <div id="form-data">
+                <h2><?php echo isset($edit_suit_id) ? 'Editar' : 'Agregar'; ?> traje</h2>
+                <!-- Model options -->
+                <div class="select-container">
+                    <label for="model">Modelo:</label>
+                    <select name="model" id="model" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                        foreach ($suits as $value => $text) {
+                            echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
+                        }
+                        ?>
+                    </select>
 
-            <!-- Model options -->
-            <div class="select-container">
-                <label for="model">Modelo:</label>
-                <select name="model" id="model" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <?php
-                    foreach ($suits as $value => $text) {
-                        echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
-                    }
-                    ?>
-                </select>
+                <!-- Color options -->
+                    <label for="color">Color:</label>
+                    <select name="color" id="color" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                        foreach ($color_options as $value => $text) {
+                            echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
 
-            <!-- Color options -->
-                <label for="color">Color:</label>
-                <select name="color" id="color" required>
-                    <option value="" disabled>Seleccione...</option>
-                    <?php
-                    foreach ($color_options as $value => $text) {
-                        echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
-                    }
-                    ?>
-                </select>
+                <!-- Input containers -->
+                <div class="input-container">
+                    <label for="price">Precio:</label>
+                    <input type="text" name="price" id="price" value="<?php echo $price; ?>" placeholder="Ingrese el precio" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="chest_size">Talla de Pecho (cm):</label>
+                    <input type="number" name="chest_size" id="chest_size" value="<?php echo $chest_size; ?>" placeholder="Ingrese la talla de pecho" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="shoulder_size">Talla de Hombro (cm):</label>
+                    <input type="number" name="shoulder_size" id="shoulder_size" value="<?php echo $shoulder_size; ?>" placeholder="Ingrese la talla de hombro" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="hip_size">Talla de Cadera (cm):</label>
+                    <input type="number" name="hip_size" id="hip_size" value="<?php echo $hip_size; ?>" placeholder="Ingrese la talla de cadera" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="waist_size">Talla de Cintura (cm):</label>
+                    <input type="number" name="waist_size" id="waist_size" value="<?php echo $waist_size; ?>" placeholder="Ingrese la talla de cintura" required>
+                </div>
             </div>
 
-            <div class="input-container">
-                <label for="price">Precio:</label>
-                <input type="text" name="price" id="price" value="<?php echo $price; ?>" placeholder="Ingrese el precio" required>
-            </div>
+            <!-- Input to upload an image -->
+            <div id="form-image">
+                <?php if (isset($img_path) && !empty($img_path)) { ?>
+                    <p>Imagen actual: <?php echo basename($img_path); ?></p>
+                    <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } else { ?>
+                    <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } ?>
+                <label for="imagen"><?php echo isset($edit_suit_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
+                <div id="img-btn">
+                    <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_suit_id) ? 'required' : ''; ?>>
+                </div>
 
-            <div class="input-container">
-                <label for="chest_size">Talla de Pecho (cm):</label>
-                <input type="number" name="chest_size" id="chest_size" value="<?php echo $chest_size; ?>" placeholder="Ingrese la talla de pecho" required>
-            </div>
-
-            <div class="input-container">
-                <label for="shoulder_size">Talla de Hombro (cm):</label>
-                <input type="number" name="shoulder_size" id="shoulder_size" value="<?php echo $shoulder_size; ?>" placeholder="Ingrese la talla de hombro" required>
-            </div>
-
-            <div class="input-container">
-                <label for="hip_size">Talla de Cadera (cm):</label>
-                <input type="number" name="hip_size" id="hip_size" value="<?php echo $hip_size; ?>" placeholder="Ingrese la talla de cadera" required>
-            </div>
-
-            <div class="input-container">
-                <label for="waist_size">Talla de Cintura (cm):</label>
-                <input type="number" name="waist_size" id="waist_size" value="<?php echo $waist_size; ?>" placeholder="Ingrese la talla de cintura" required>
+                <input id="send-btn" type="submit" value="<?php echo isset($edit_suit_id) ? 'Guardar cambios' : 'Añadir'; ?>">
             </div>
         </div>
-
-        <!-- Input to upload an image -->
-        <div id="form-image">
-            <?php if (isset($img_path) && !empty($img_path)) { ?>
-                <p>Imagen actual: <?php echo basename($img_path); ?></p>
-                <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } else { ?>
-                <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } ?>
-            <label for="imagen"><?php echo isset($edit_suit_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-            <input id="img-btn" type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_suit_id) ? 'required' : ''; ?>>
-
-            <input id="send-btn" type="submit" value="<?php echo isset($edit_suit_id) ? 'Guardar cambios' : 'Añadir'; ?>">
-        </div>
-    </div>
-
-
-
-</form>
-
-
-
+    </form>
     <script>
         function previewImage() {
             var fileInput = document.getElementById('imagen_src');

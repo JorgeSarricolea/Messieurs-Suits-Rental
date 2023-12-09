@@ -170,15 +170,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <!-- Input to upload a image -->
         <section id="img-main-container">
-            <label for="imagen"><?php echo isset($edit_pant_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_pant_id) ? 'required' : ''; ?>>
-
             <?php if (isset($img_path) && !empty($img_path)) { ?>
                 <p>Imagen actual: <?php echo basename($img_path); ?></p>
                 <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
             <?php } else { ?>
                 <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
             <?php } ?>
+            <label for="imagen"><?php echo isset($edit_pant_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
+            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_pant_id) ? 'required' : ''; ?>>
+
         </section>
 
         <input type="submit" value="<?php echo isset($edit_pant_id) ? 'Guardar cambios' : 'Añadir'; ?>">

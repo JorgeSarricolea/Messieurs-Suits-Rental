@@ -113,13 +113,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Execute the query
+    $status = ""; // Initialize the state variable
     if ($conn->query($sql) === TRUE) {
-        $success_message = isset($_POST['edit_jacket_id']) ? 'Saco editado exitosamente' : 'Saco agregado exitosamente';
-        echo "<div class='success-message'>" . $success_message . "</div>";
-        header("refresh:2;url=./suit_jackets.php");
+        $success_message = isset($_POST['edit_suit_id']) ? 'Traje editado exitosamente' : 'Traje agregado exitosamente';
+        $status = "success"; // success status
+        header("refresh:2;url=./suits.php");
     } else {
-        $error_message = isset($_POST['edit_jacket_id']) ? 'Error al editar' : 'Error al agregar';
-        echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        $error_message = isset($_POST['edit_suit_id']) ? 'Error al editar' : 'Error al agregar';
+        $status = "error"; // error status
     }
 
     // Close the connection to the database
@@ -131,58 +132,86 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="../styles/RU_form.css">
     <title><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> saco</title>
 </head>
 <body>
-    <form action="./suit_jacket_details.php" method="post" enctype="multipart/form-data">
-        <h2><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> saco</h2>
+    <form id="RU-form" action="./suit_jacket_details.php" method="post" enctype="multipart/form-data">
+        <?php
+        // Show the status message
+        if ($status === "success") {
+            echo "<div class='success-message'>" . $success_message . "</div>";
+        } elseif ($status === "error") {
+            echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        }
+        ?>
 
         <!-- Hidden field for ID in case of editing -->
         <?php if (isset($edit_jacket_id)) { ?>
             <input type="hidden" name="edit_jacket_id" value="<?php echo $edit_jacket_id; ?>">
         <?php } ?>
 
-        <!-- Model options -->
-        Modelo:
-        <select name="model" required>
-            <option value="" disabled>Seleccione...</option>
-            <?php
-                foreach ($jackets as $value => $text) {
-                    echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
-                }
-            ?>
-        </select><br>
+        <div class="form-container">
+            <div id="form-data">
+                <h2><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> saco</h2>
+                <div class="select-container">
+                    <!-- Model options -->
+                    <label for="model">Modelo:</label>
+                    <select name="model" id="model" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                        foreach ($jackets as $value => $text) {
+                            echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
+                        }
+                        ?>
+                    </select>
 
-        <!-- Color options -->
-        Color:
-        <select name="color" required>
-            <option value="" disabled>Seleccione...</option>
-            <?php
-                foreach ($color_options as $value => $text) {
-                    echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
-                }
-            ?>
-        </select><br>
+                    <!-- Color options -->
+                    <label for="color">Color:</label>
+                    <select name="color" id="color" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                        foreach ($color_options as $value => $text) {
+                            echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
 
-        Talla de pecho (cm): <input type="number" name="chest_size" value="<?php echo $chest_size; ?>" required><br>
-        Talla de hombro (cm): <input type="number" name="shoulder_size" value="<?php echo $shoulder_size; ?>" required><br>
-        Precio: <input type="text" name="price" value="<?php echo $price; ?>" required><br>
+                <!-- Input containers -->
+                <div class="input-container">
+                    <label for="chest_size">Talla de pecho (cm):</label>
+                    <input type="number" name="chest_size" value="<?php echo $chest_size; ?>" placeholder="Ingrese la talla de pecho" required><br>
+                </div>
 
-        <!-- Input to upload a image -->
-        <section id="img-main-container">
-            <label for="imagen"><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
+                <div class="input-container">
+                    <label for="shoulder_size">Talla de hombro (cm):</label>
+                    <input type="number" name="shoulder_size" value="<?php echo $shoulder_size; ?>" placeholder="Ingrese la talla de hombros" required><br>
+                </div>
 
-            <?php if (isset($img_path) && !empty($img_path)) { ?>
-                <p>Imagen actual: <?php echo basename($img_path); ?></p>
-                <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } else { ?>
-                <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } ?>
-        </section>
+                <div class="input-container">
+                    <label for="price">Precio:</label>
+                    <input type="text" name="price" value="<?php echo $price; ?>" placeholder="Ingrese el precio" required>
+                </div>
+            </div>
 
-        <input type="submit" value="<?php echo isset($edit_jacket_id) ? 'Guardar cambios' : 'Añadir'; ?>">
+            <!-- Input to upload an image -->
+            <div id="form-image">
+                <?php if (isset($img_path) && !empty($img_path)) { ?>
+                    <p>Imagen actual: <?php echo basename($img_path); ?></p>
+                    <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } else { ?>
+                    <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } ?>
+                <label for="imagen"><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
+                <input id="img-btn" type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
+
+                <input id="send-btn" type="submit" value="<?php echo isset($edit_jacket_id) ? 'Guardar cambios' : 'Añadir'; ?>">
+            </div>
+        </div>
     </form>
+
 
     <script>
         function previewImage() {

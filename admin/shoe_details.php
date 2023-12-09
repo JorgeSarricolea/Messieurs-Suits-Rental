@@ -109,13 +109,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Execute the query
+    $status = ""; // Initialize the state variable
     if ($conn->query($sql) === TRUE) {
-        $success_message = isset($_POST['edit_shoe_id']) ? 'Zapato editado exitosamente' : 'Zapato agregado exitosamente';
-        echo "<div class='success-message'>" . $success_message . "</div>";
+        $success_message = isset($_POST['edit_shoe_id']) ? 'Zapatos editados exitosamente' : 'Zapatos agregados exitosamente';
+        $status = "success"; // success status
         header("refresh:2;url=./shoes.php");
     } else {
         $error_message = isset($_POST['edit_shoe_id']) ? 'Error al editar' : 'Error al agregar';
-        echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        $status = "error"; // error status
     }
 
     // Close the connection to the database
@@ -127,56 +128,81 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="../styles/RU_form.css">
     <title><?php echo isset($edit_shoe_id) ? 'Editar' : 'Agregar'; ?> zapato</title>
 </head>
 <body>
-    <form action="./shoe_details.php" method="post" enctype="multipart/form-data">
-        <h2><?php echo isset($edit_shoe_id) ? 'Editar' : 'Agregar'; ?> zapato</h2>
+    <form id="RU-form" action="./shoe_details.php" method="post" enctype="multipart/form-data">
+        <?php
+        // Show the status message
+        if ($status === "success") {
+            echo "<div class='success-message'>" . $success_message . "</div>";
+        } elseif ($status === "error") {
+            echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        }
+        ?>
 
         <!-- Hidden field for ID in case of editing -->
         <?php if (isset($edit_shoe_id)) { ?>
             <input type="hidden" name="edit_shoe_id" value="<?php echo $edit_shoe_id; ?>">
         <?php } ?>
 
-        <!-- Model options -->
-        Modelo:
-        <select name="model" required>
-            <option value="" disabled>Seleccione...</option>
-            <?php
-                foreach ($shoes as $value => $text) {
-                    echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
-                }
-            ?>
-        </select><br>
+        <div class="form-container">
+            <div id="form-data">
+                <h2><?php echo isset($edit_shoe_id) ? 'Editar' : 'Agregar'; ?> zapato</h2>
+                <div class="select-container">
+                    <!-- Model options -->
+                    <label for="model">Modelo:</label>
+                    <select name="model" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                            foreach ($shoes as $value => $text) {
+                                echo "<option value='$value'" . ($model === $value ? ' selected' : '') . ">$text</option>";
+                            }
+                        ?>
+                    </select>
 
-        <!-- Color options -->
-        Color:
-        <select name="color" required>
-            <option value="" disabled>Seleccione...</option>
-            <?php
-                foreach ($color_options as $value => $text) {
-                    echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
-                }
-            ?>
-        </select><br>
+                    <!-- Color options -->
+                    <label for="color">Color:</label>
+                    <select name="color" required>
+                        <option value="" disabled>Seleccione...</option>
+                        <?php
+                            foreach ($color_options as $value => $text) {
+                                echo "<option value='$value'" . ($color === $value ? ' selected' : '') . ">$text</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
 
-        Talla: <input type="number" name="size" step="0.01" value="<?php echo $size; ?>" required><br>
-        Precio: <input type="text" name="price" value="<?php echo $price; ?>" required><br>
+                <!-- Input containers -->
+                <div class="input-container">
+                    <label for="size">Talla:</label>
+                    <input type="number" name="size" step="0.01" value="<?php echo $size; ?>" placeholder="Ingrese la talla" required><br>
+                </div>
 
-        <!-- Input to upload a image -->
-        <div>
-            <label for="imagen"><?php echo isset($edit_shoe_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-            <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_shoe_id) ? 'required' : ''; ?>>
+                <div class="input-container">
+                    <label for="price">Precio:</label>
+                    <input type="text" name="price" value="<?php echo $price; ?>" placeholder="Ingrese el precio" required><br>
+                </div>
+            </div>
 
-            <?php if (isset($img_path) && !empty($img_path)) { ?>
-                <p>Imagen actual: <?php echo basename($img_path); ?></p>
-                <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } else { ?>
-                <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
-            <?php } ?>
+            <!-- Input to upload a image -->
+            <div id="form-image">
+                <?php if (isset($img_path) && !empty($img_path)) { ?>
+                    <p>Imagen actual: <?php echo basename($img_path); ?></p>
+                    <img id="image-preview" src="<?php echo $img_path; ?>" alt="Vista previa de la imagen" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } else { ?>
+                    <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
+                <?php } ?>
+                <label for="imagen"><?php echo isset($edit_shoe_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
+                <div id="img-btn">
+                    <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_shoe_id) ? 'required' : ''; ?>>
+                </div>
+
+                <input id="send-btn" type="submit" value="<?php echo isset($edit_shoe_id) ? 'Guardar cambios' : 'Añadir'; ?>">
+            </div>
         </div>
-
-        <input type="submit" value="<?php echo isset($edit_shoe_id) ? 'Guardar cambios' : 'Añadir'; ?>">
     </form>
 
     <script>

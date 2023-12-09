@@ -115,11 +115,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Execute the query
     $status = ""; // Initialize the state variable
     if ($conn->query($sql) === TRUE) {
-        $success_message = isset($_POST['edit_suit_id']) ? 'Traje editado exitosamente' : 'Traje agregado exitosamente';
+        $success_message = isset($_POST['edit_jacket_id']) ? 'Saco editado exitosamente' : 'saco agregado exitosamente';
         $status = "success"; // success status
-        header("refresh:2;url=./suits.php");
+        header("refresh:2;url=./suit_jackets.php");
     } else {
-        $error_message = isset($_POST['edit_suit_id']) ? 'Error al editar' : 'Error al agregar';
+        $error_message = isset($_POST['edit_jacket_id']) ? 'Error al editar' : 'Error al agregar';
         $status = "error"; // error status
     }
 
@@ -205,7 +205,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <img id="image-preview" src="../uploads/no_chosen_img.png" alt="Vista previa de la imagen predeterminada" style="max-width: 150px; max-height: 150px; margin-top: 10px;">
                 <?php } ?>
                 <label for="imagen"><?php echo isset($edit_jacket_id) ? 'Editar' : 'Agregar'; ?> imagen</label>
-                <input id="img-btn" type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
+                <div id="img-btn">
+                    <input type="file" name="imagen" id="imagen_src" onchange="previewImage()" <?php echo !isset($edit_jacket_id) ? 'required' : ''; ?>>
+                </div>
 
                 <input id="send-btn" type="submit" value="<?php echo isset($edit_jacket_id) ? 'Guardar cambios' : 'Añadir'; ?>">
             </div>

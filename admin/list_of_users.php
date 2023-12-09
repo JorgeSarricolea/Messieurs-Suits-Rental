@@ -23,7 +23,7 @@
         if ($conn->query($sql) === TRUE) {
             $deletion_message = "Usuario eliminado correctamente";
             echo "<div class='deletion-message'>" . $deletion_message . "</div>";
-            header("refresh:2;url=./list_of_users.php");
+            echo "<script>setTimeout(function() { window.location.href = './list_of_users.php'; }, 2000);</script>";
         } else {
             $error_message = "Error al eliminar el usuario";
             echo "<div class='deletion-message'>" . $error_message . $conn->error . "</div>";

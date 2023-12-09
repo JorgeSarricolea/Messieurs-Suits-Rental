@@ -18,12 +18,23 @@
   gap: 20px;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-data {
+  width: 100%;
+}
+
 .form-container {
   display: flex;
   justify-content: space-between;
 }
 
-.input-container {
+.input-container,
+.user-form {
   display: flex;
   flex-direction: column;
 }
@@ -42,6 +53,10 @@
 
 .input-container:focus-within label {
   opacity: 1;
+}
+
+.lonely-container {
+  padding: 200px 0;
 }
 
 select {
@@ -104,4 +119,11 @@ select:focus::placeholder {
 
 input[type="file"]::file-selector-button {
   display: none;
+}
+
+.input-container input[type="checkbox"] {
+  margin-left: 5px; /* Ajusta el margen izquierdo según tus necesidades */
+  background-color: #eaeaea; /* Cambia el color de fondo */
+  border: 1px solid #ccc; /* Añade un borde */
+  padding: 5px; /* Ajusta el relleno */
 }

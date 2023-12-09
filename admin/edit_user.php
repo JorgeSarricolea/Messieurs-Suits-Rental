@@ -52,13 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "UPDATE Users SET name = '$name', lastname = '$lastname', email = '$email', isAdmin = $isAdmin WHERE user_ID = $update_id";
 
     // Execute the query
+    $status = ""; // Initialize the state variable
     if ($conn->query($sql) === TRUE) {
-        $success_message = 'Usuario editado exitosamente';
-        echo "<div class='success-message'>" . $success_message . "</div>";
+        $success_message = "Usuario editado exitosamente";
+        $status = "success"; // success status
         header("refresh:2;url=./list_of_users.php");
     } else {
-        $error_message = 'Error al editar el usuario';
-        echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        $error_message = "Error al editar el usuario";
+        $status = "error"; // error status
     }
 
     // Close the connection to the database
@@ -70,10 +71,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="../styles/RU_form.css">
     <title>Editar Usuario</title>
 </head>
 <body>
-    <form action="./edit_user.php" method="post">
+    <form id="RU-form" class="lonely-container" action="./edit_user.php" method="post">
+        <?php
+        // Show the status message
+        if ($status === "success") {
+            echo "<div class='success-message'>" . $success_message . "</div>";
+        } elseif ($status === "error") {
+            echo "<div class='error-message'>" . $error_message . $conn->error . "</div>";
+        }
+        ?>
+
         <h2>Editar Usuario</h2>
 
         <!-- Hidden field for ID in case of editing -->
@@ -81,12 +93,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="hidden" name="edit_user_id" value="<?php echo $edit_user_id; ?>">
         <?php } ?>
 
-        Nombre: <input type="text" name="name" value="<?php echo $name; ?>" required><br>
-        Apellido: <input type="text" name="lastname" value="<?php echo $lastname; ?>" required><br>
-        Correo electrónico: <input type="email" name="email" value="<?php echo $email; ?>" required><br>
-        Es administrador: <input type="checkbox" name="isAdmin" <?php echo $isAdmin ? 'checked' : ''; ?>><br>
+        <div class="input-container">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" value="<?php echo $name; ?>" placeholder="Ingrese su nombre" required><br>
+        </div>
 
-        <input type="submit" value="Guardar cambios">
+        <div class="input-container">
+            <label for="lastname">Apellido:</label>
+            <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="Ingrese su apellido" required><br>
+        </div>
+
+        <div class="input-container">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Ingrese su correo electrónico" required><br>
+        </div>
+
+        <div class="user-form" style="margin-bottom: 20px; justify-content: center; width: fit-content; display: flex; flex-direction: row; gap: 20px">
+            <label for="isAdmin">Es administrador:</label>
+            <input type="checkbox" name="isAdmin" <?php echo $isAdmin ? 'checked' : ''; ?>>
+        </div>
+
+        <input id="send-btn" type="submit" value="Guardar cambios">
     </form>
 </body>
 </html>

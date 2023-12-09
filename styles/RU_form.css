@@ -1,0 +1,110 @@
+#RU-form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--brown);
+  color: var(--lightBeige);
+  border-radius: 25px;
+  padding: 40px;
+  margin: 40px auto;
+  min-width: 70%;
+  height: fit-content;
+}
+
+#form-data,
+#form-image {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  gap: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.input-container label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.input-container:focus-within label {
+  opacity: 1;
+}
+
+select {
+  background-color: transparent;
+  color: var(--lightBeige);
+  border: 1px solid var(--lightBeige);
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+select option {
+  background-color: var(--brown);
+}
+
+input::placeholder,
+select::placeholder {
+  color: var(--beige);
+}
+
+input:focus::placeholder,
+select:focus::placeholder {
+  color: transparent;
+}
+
+#RU-form img {
+  min-width: 100%;
+  min-height: 60%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+#send-btn {
+  background-color: var(--lightBeige);
+  color: var(--brown);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+#send-btn:hover {
+  background-color: var(--beige);
+}
+
+#img-btn {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed var(--lightBeige);
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cambia el aspecto cuando el cursor pasa sobre el botón */
+#img-btn:hover {
+  background-color: var(--lightBeige);
+  color: var(--brown);
+}
+
+input[type="file"]::file-selector-button {
+  display: none;
+}

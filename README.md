@@ -87,7 +87,7 @@ Some of the key features of this project include:
 
 - **Admin page:** The system has a page for product administration.
 
-- **CRUD:** The system has a complete CRUD for all products and users.
+- **CRUD:** The system has a complete CRUD for all products, quotes and users.
 
 ## Contribution
 

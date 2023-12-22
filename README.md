@@ -24,8 +24,8 @@ To get started with "Messieurs-Suits-Rental", follow these simple steps:
 
 ### Prerequisites
 
-> [!IMPORTANT] > **XAMPP and MySQL:** Ensure that you have XAMPP and MySQL installed on your system.
-
+> [!IMPORTANT]
+>  **XAMPP and MySQL:** Ensure that you have XAMPP and MySQL installed on your system.
 > **Database:** Consider creating the database with the tables correctly, you cand find it in the db_template file.
 
 ### Installation

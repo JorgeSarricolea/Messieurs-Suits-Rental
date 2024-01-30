@@ -89,6 +89,8 @@ Some of the key features of this project include:
 
 - **CRUD:** The system has a complete CRUD for all products, quotes and users.
 
+- **Mockup:** I have designed the user interface mockups using Figma, where all available views (Desktop) can be seen. [Click here](https://www.figma.com/file/ICSKY2vCIdx3ckDrzeTBGx/Messieurs?type=design&node-id=0%3A1&mode=design&t=ewk26cilberKFbSM-1) to view the design.
+
 ## Contribution
 
 While contributions to this project are welcome. If you would like to contribute, feel free to fork this repository and submit a pull request.
